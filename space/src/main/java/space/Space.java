@@ -98,13 +98,13 @@ public class Space extends JFrame implements MouseWheelListener,
 		space.setSize(800, 820);
 
 		if (IS_BOUNCING_BALLS) {
-			game = new BouncingBalls();
+			game = new BouncingBalls(space);
 		}
 		else {
-			game = new SolarSystem();
+			game = new SolarSystem(space);
 		}
 
-		game.init(space);
+		game.init();
 
 		space.setVisible(true);
 		while (true) {

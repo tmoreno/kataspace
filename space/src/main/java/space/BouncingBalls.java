@@ -4,8 +4,14 @@ public class BouncingBalls implements Game {
 
 	private static int nrOfObjects = 50;
 
+	private Space space;
+
+	public BouncingBalls(Space space) {
+		this.space = space;
+	}
+
 	@Override
-	public void init(Space space) {
+	public void init() {
 		space.setStepSize(1); // One second per iteration
 		for (int i = 0; i < nrOfObjects; i++) {
 			// radius,weight in [1,20]

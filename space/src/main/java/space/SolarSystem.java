@@ -7,8 +7,14 @@ public class SolarSystem implements Game {
 
 	private static int nrOfObjects = 75;
 
+	private Space space;
+
+	public SolarSystem(Space space) {
+		this.space = space;
+	}
+
 	@Override
-	public void init(Space space) {
+	public void init() {
 		space.setStepSize(3600 * 24 * 7);
 
 		double outerLimit = ASTRONOMICAL_UNIT * 20;
