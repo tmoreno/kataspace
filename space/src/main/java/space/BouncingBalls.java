@@ -1,5 +1,8 @@
 package space;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+
 public class BouncingBalls implements Game {
 
 	private static int nrOfObjects = 50;
@@ -34,5 +37,22 @@ public class BouncingBalls implements Game {
 			physicalObject.y = physicalObject.y + physicalObject.vy
 					* Space.seconds;
 		}
+	}
+
+	@Override
+	public void paintPhysicalObject(PhysicalObject physicalObject,
+			Graphics2D graphics) {
+		graphics.setColor(Color.WHITE);
+
+		int xtmp = (int) ((physicalObject.x - Space.centrex) + Space.frame
+				.getSize().width / 2);
+
+		int ytmp = (int) ((physicalObject.y - Space.centrey) + Space.frame
+				.getSize().height / 2);
+
+		graphics.fillOval((int) (xtmp - physicalObject.radius),
+				(int) (ytmp - physicalObject.radius),
+				(int) (2 * physicalObject.radius),
+				(int) (2 * physicalObject.radius));
 	}
 }

@@ -1,5 +1,7 @@
 package space;
 
+import java.awt.Graphics2D;
+
 public class SolarSystem implements Game {
 
 	private static final double ASTRONOMICAL_UNIT = 149597870.7e3;
@@ -69,5 +71,24 @@ public class SolarSystem implements Game {
 			aff.vx = aff.vx - ax * Space.seconds;
 			aff.vy = aff.vy - ay * Space.seconds;
 		}
+	}
+
+	@Override
+	public void paintPhysicalObject(PhysicalObject physicalObject,
+			Graphics2D graphics) {
+
+		graphics.setColor(Space.weightToColor(physicalObject.mass));
+
+		int diameter = physicalObject.mass >= Space.EARTH_WEIGHT * 10000 ? 7
+				: 2;
+
+		int xtmp = (int) ((physicalObject.x - Space.centrex) / Space.scale + Space.frame
+				.getSize().width / 2);
+
+		int ytmp = (int) ((physicalObject.y - Space.centrey) / Space.scale + Space.frame
+				.getSize().height / 2);
+
+		graphics.fillOval(xtmp - diameter / 2, ytmp - diameter / 2, diameter,
+				diameter);
 	}
 }
