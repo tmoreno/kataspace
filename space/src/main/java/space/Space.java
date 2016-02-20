@@ -21,7 +21,6 @@ import javax.swing.JFrame;
 public class Space extends JFrame implements MouseWheelListener,
 		MouseMotionListener, KeyListener {
 	public static final double EARTH_WEIGHT = 5.9736e24;
-	private static final double ASTRONOMICAL_UNIT = 149597870.7e3;
 	static boolean IS_BOUNCING_BALLS = false;
 	static boolean IS_BREAKOUT = false; // Opens bottom, only active if
 										// IS_BOUNCING_BALLS is true
@@ -36,7 +35,6 @@ public class Space extends JFrame implements MouseWheelListener,
 	static double scale = 10;
 	private static boolean showWake = false;
 	private static int step = 0;
-	private static int nrOfObjects = 75;
 	private static int frameRate = 25;
 
 	static JFrame frame;
@@ -134,11 +132,6 @@ public class Space extends JFrame implements MouseWheelListener,
 				e.printStackTrace();
 			}
 		}
-	}
-
-	private static double randSquare() {
-		double random = Math.random();
-		return random * random;
 	}
 
 	public void setStepSize(double seconds) {
