@@ -4,6 +4,7 @@ public class SolarSystem implements Game {
 
 	private static final double ASTRONOMICAL_UNIT = 149597870.7e3;
 	private static final double EARTH_WEIGHT = 5.9736e24;
+	private static final double G = 6.67428e-11; // m3/kgs2
 
 	private static int nrOfObjects = 75;
 
@@ -42,5 +43,31 @@ public class SolarSystem implements Game {
 	private double randSquare() {
 		double random = Math.random();
 		return random * random;
+	}
+
+	@Override
+	public void step() {
+		for (PhysicalObject aff : Space.getObjects()) {
+			double fx = 0;
+			double fy = 0;
+			for (PhysicalObject oth : Space.getObjects()) {
+				if (aff == oth)
+					continue;
+				double[] d = new double[] { aff.x - oth.x, aff.y - oth.y };
+				double r2 = Math.pow(d[0], 2) + Math.pow(d[1], 2);
+				double f = G * aff.mass * oth.mass / r2;
+				double sqrtOfR2 = Math.sqrt(r2);
+				fx += f * d[0] / sqrtOfR2;
+				fy += f * d[1] / sqrtOfR2;
+			}
+			double ax = fx / aff.mass;
+			double ay = fy / aff.mass;
+			aff.x = aff.x - ax * Math.pow(Space.seconds, 2) / 2 + aff.vx
+					* Space.seconds;
+			aff.y = aff.y - ay * Math.pow(Space.seconds, 2) / 2 + aff.vy
+					* Space.seconds;
+			aff.vx = aff.vx - ax * Space.seconds;
+			aff.vy = aff.vy - ay * Space.seconds;
+		}
 	}
 }

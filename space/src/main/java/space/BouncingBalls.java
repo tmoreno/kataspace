@@ -25,4 +25,14 @@ public class BouncingBalls implements Game {
 		Space.centrex = 400;
 		Space.centrey = 390; // Must compensate for title bar
 	}
+
+	@Override
+	public void step() {
+		for (PhysicalObject physicalObject : Space.getObjects()) {
+			physicalObject.x = physicalObject.x + physicalObject.vx
+					* Space.seconds;
+			physicalObject.y = physicalObject.y + physicalObject.vy
+					* Space.seconds;
+		}
+	}
 }
