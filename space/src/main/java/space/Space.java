@@ -4,11 +4,8 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -16,7 +13,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-public class Space extends JFrame implements MouseMotionListener, KeyListener {
+public class Space extends JFrame implements KeyListener {
 	public static final double EARTH_WEIGHT = 5.9736e24;
 	private static boolean IS_BOUNCING_BALLS = false;
 	static boolean IS_BREAKOUT = false; // Opens bottom, only active if
@@ -98,7 +95,6 @@ public class Space extends JFrame implements MouseMotionListener, KeyListener {
 	public static void main(String[] args) throws InterruptedException,
 			InvocationTargetException {
 		final Space space = new Space(IS_BOUNCING_BALLS);
-		space.addMouseMotionListener(space);
 		space.addKeyListener(space);
 		space.setSize(800, 820);
 
@@ -196,24 +192,6 @@ public class Space extends JFrame implements MouseMotionListener, KeyListener {
 			}
 		}
 		objects.removeAll(remove);
-	}
-
-	private static Point lastDrag = null;
-
-	public void mouseDragged(final MouseEvent e) {
-		if (!IS_BOUNCING_BALLS) {
-			if (lastDrag == null) {
-				lastDrag = e.getPoint();
-			}
-			centrex = centrex - ((e.getX() - lastDrag.x) * scale);
-			centrey = centrey - ((e.getY() - lastDrag.y) * scale);
-			lastDrag = e.getPoint();
-			getGraphics().clearRect(0, 0, getWidth(), getHeight());
-		}
-	}
-
-	public void mouseMoved(MouseEvent e) {
-		lastDrag = null;
 	}
 
 	public void keyPressed(KeyEvent e) {
