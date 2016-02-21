@@ -2,6 +2,8 @@ package space;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BouncingBalls implements Game {
 
@@ -37,6 +39,51 @@ public class BouncingBalls implements Game {
 			physicalObject.y = physicalObject.y + physicalObject.vy
 					* Space.seconds;
 		}
+	}
+
+	@Override
+	public void collide() {
+		List<PhysicalObject> remove = new ArrayList<PhysicalObject>();
+
+		for (PhysicalObject one : Space.getObjects()) {
+			if (remove.contains(one))
+				continue;
+
+			for (PhysicalObject other : Space.getObjects()) {
+				if (one == other || remove.contains(other))
+					continue;
+
+				double distance = Math.sqrt(Math.pow(one.x - other.x, 2)
+						+ Math.pow(one.y - other.y, 2));
+
+				double collsionDistance = one.radius + other.radius;
+
+				if (distance < collsionDistance) {
+					one.hitBy(other, Space.seconds);
+				}
+			}
+
+			if (one.x - one.radius < 0) {
+				one.vx = -one.vx;
+			}
+
+			if (one.x + one.radius > 800) {
+				one.vx = -one.vx;
+			}
+
+			if (one.y - one.radius < 0) {
+				one.vy = -one.vy;
+			}
+
+			if (one.y + one.radius > 800 && !Space.IS_BREAKOUT) {
+				one.vy = -one.vy;
+			}
+			else if (one.y - one.radius > 800) {
+				remove.add(one);
+			}
+		}
+
+		Space.getObjects().removeAll(remove);
 	}
 
 	@Override

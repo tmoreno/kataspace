@@ -6,6 +6,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SolarSystem implements Game, MouseWheelListener,
 		MouseMotionListener {
@@ -81,6 +83,29 @@ public class SolarSystem implements Game, MouseWheelListener,
 			aff.vx = aff.vx - ax * Space.seconds;
 			aff.vy = aff.vy - ay * Space.seconds;
 		}
+	}
+
+	@Override
+	public void collide() {
+		List<PhysicalObject> remove = new ArrayList<PhysicalObject>();
+
+		for (PhysicalObject one : Space.getObjects()) {
+			if (remove.contains(one))
+				continue;
+
+			for (PhysicalObject other : Space.getObjects()) {
+				if (one == other || remove.contains(other))
+					continue;
+
+				if (Math.sqrt(Math.pow(one.x - other.x, 2)
+						+ Math.pow(one.y - other.y, 2)) < 5e9) {
+					one.absorb(other);
+					remove.add(other);
+				}
+			}
+		}
+
+		Space.getObjects().removeAll(remove);
 	}
 
 	@Override

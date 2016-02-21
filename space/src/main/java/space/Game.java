@@ -8,5 +8,7 @@ public interface Game {
 
 	void step();
 
+	void collide();
+
 	void paintPhysicalObject(PhysicalObject physicalObject, Graphics2D graphics);
 }
