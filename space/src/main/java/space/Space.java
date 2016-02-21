@@ -9,8 +9,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -18,8 +16,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-public class Space extends JFrame implements MouseWheelListener,
-		MouseMotionListener, KeyListener {
+public class Space extends JFrame implements MouseMotionListener, KeyListener {
 	public static final double EARTH_WEIGHT = 5.9736e24;
 	private static boolean IS_BOUNCING_BALLS = false;
 	static boolean IS_BREAKOUT = false; // Opens bottom, only active if
@@ -101,7 +98,6 @@ public class Space extends JFrame implements MouseWheelListener,
 	public static void main(String[] args) throws InterruptedException,
 			InvocationTargetException {
 		final Space space = new Space(IS_BOUNCING_BALLS);
-		space.addMouseWheelListener(space);
 		space.addMouseMotionListener(space);
 		space.addKeyListener(space);
 		space.setSize(800, 820);
@@ -200,14 +196,6 @@ public class Space extends JFrame implements MouseWheelListener,
 			}
 		}
 		objects.removeAll(remove);
-	}
-
-	public void mouseWheelMoved(final MouseWheelEvent e) {
-		if (!IS_BOUNCING_BALLS) {
-			scale = scale + scale * (Math.min(9, e.getWheelRotation())) / 10
-					+ 0.0001;
-			getGraphics().clearRect(0, 0, getWidth(), getHeight());
-		}
 	}
 
 	private static Point lastDrag = null;

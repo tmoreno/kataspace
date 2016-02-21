@@ -1,8 +1,10 @@
 package space;
 
 import java.awt.Graphics2D;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 
-public class SolarSystem implements Game {
+public class SolarSystem implements Game, MouseWheelListener {
 
 	private static final double ASTRONOMICAL_UNIT = 149597870.7e3;
 	private static final double EARTH_WEIGHT = 5.9736e24;
@@ -14,6 +16,8 @@ public class SolarSystem implements Game {
 
 	public SolarSystem(Space space) {
 		this.space = space;
+
+		this.space.addMouseWheelListener(this);
 	}
 
 	@Override
@@ -90,5 +94,14 @@ public class SolarSystem implements Game {
 
 		graphics.fillOval(xtmp - diameter / 2, ytmp - diameter / 2, diameter,
 				diameter);
+	}
+
+	@Override
+	public void mouseWheelMoved(MouseWheelEvent e) {
+		Space.scale = Space.scale + Space.scale
+				* (Math.min(9, e.getWheelRotation())) / 10 + 0.0001;
+
+		space.getGraphics()
+				.clearRect(0, 0, space.getWidth(), space.getHeight());
 	}
 }
