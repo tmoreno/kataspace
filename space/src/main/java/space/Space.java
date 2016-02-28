@@ -13,6 +13,9 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
+import space.bouncingballs.BouncingBalls;
+import space.solarsystem.SolarSystem;
+
 public class Space extends JFrame implements KeyListener {
 	public static final double EARTH_WEIGHT = 5.9736e24;
 	private static boolean IS_BOUNCING_BALLS = false;
@@ -23,9 +26,9 @@ public class Space extends JFrame implements KeyListener {
 
 	public static double seconds = 1;
 	private static List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
-	static double centrex = 0.0;
-	static double centrey = 0.0;
-	static double scale = 10;
+	private static double centrex = 0.0;
+	private static double centrey = 0.0;
+	private static double scale = 10;
 	private static boolean showWake = false;
 	private static int step = 0;
 	private static int frameRate = 25;
@@ -161,6 +164,38 @@ public class Space extends JFrame implements KeyListener {
 
 	public static List<PhysicalObject> getObjects() {
 		return Space.objects;
+	}
+
+	public static double getScale() {
+		return scale;
+	}
+
+	public static void setScale(double scale) {
+		Space.scale = scale;
+	}
+
+	public static double getCentrex() {
+		return centrex;
+	}
+
+	public static void setCentrex(double centrex) {
+		Space.centrex = centrex;
+	}
+
+	public static double getCentrey() {
+		return centrey;
+	}
+
+	public static void setCentrey(double centrey) {
+		Space.centrey = centrey;
+	}
+
+	public static JFrame getFrame() {
+		return frame;
+	}
+
+	public static boolean isBreackout() {
+		return IS_BREAKOUT;
 	}
 
 }

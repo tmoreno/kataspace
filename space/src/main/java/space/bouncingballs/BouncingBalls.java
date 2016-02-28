@@ -1,9 +1,13 @@
-package space;
+package space.bouncingballs;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
+
+import space.Game;
+import space.PhysicalObject;
+import space.Space;
 
 public class BouncingBalls implements Game {
 
@@ -26,9 +30,9 @@ public class BouncingBalls implements Game {
 					20 + 760 * Math.random(), 3 - 6 * Math.random(),
 					3 - 6 * Math.random(), radiusAndWeight);
 		}
-		Space.scale = 1;
-		Space.centrex = 400;
-		Space.centrey = 390; // Must compensate for title bar
+		Space.setScale(1);
+		Space.setCentrex(400);
+		Space.setCentrey(390); // Must compensate for title bar
 	}
 
 	@Override
@@ -75,7 +79,7 @@ public class BouncingBalls implements Game {
 				one.vy = -one.vy;
 			}
 
-			if (one.y + one.radius > 800 && !Space.IS_BREAKOUT) {
+			if (one.y + one.radius > 800 && !Space.isBreackout()) {
 				one.vy = -one.vy;
 			}
 			else if (one.y - one.radius > 800) {
@@ -91,11 +95,11 @@ public class BouncingBalls implements Game {
 			Graphics2D graphics) {
 		graphics.setColor(Color.WHITE);
 
-		int xtmp = (int) ((physicalObject.x - Space.centrex) + Space.frame
-				.getSize().width / 2);
+		int xtmp = (int) ((physicalObject.x - Space.getCentrex()) + Space
+				.getFrame().getSize().width / 2);
 
-		int ytmp = (int) ((physicalObject.y - Space.centrey) + Space.frame
-				.getSize().height / 2);
+		int ytmp = (int) ((physicalObject.y - Space.getCentrey()) + Space
+				.getFrame().getSize().height / 2);
 
 		graphics.fillOval((int) (xtmp - physicalObject.radius),
 				(int) (ytmp - physicalObject.radius),

@@ -1,4 +1,4 @@
-package space;
+package space.solarsystem;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -8,6 +8,10 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import space.Game;
+import space.PhysicalObject;
+import space.Space;
 
 public class SolarSystem implements Game, MouseWheelListener,
 		MouseMotionListener {
@@ -49,7 +53,7 @@ public class SolarSystem implements Game, MouseWheelListener,
 			Space.add(weightKilos, x, y, vx, vy, 1);
 		}
 
-		Space.scale = outerLimit / space.getWidth();
+		Space.setScale(outerLimit / space.getWidth());
 
 		Space.add(EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
 	}
@@ -117,11 +121,11 @@ public class SolarSystem implements Game, MouseWheelListener,
 		int diameter = physicalObject.mass >= Space.EARTH_WEIGHT * 10000 ? 7
 				: 2;
 
-		int xtmp = (int) ((physicalObject.x - Space.centrex) / Space.scale + Space.frame
-				.getSize().width / 2);
+		int xtmp = (int) ((physicalObject.x - Space.getCentrex())
+				/ Space.getScale() + Space.getFrame().getSize().width / 2);
 
-		int ytmp = (int) ((physicalObject.y - Space.centrey) / Space.scale + Space.frame
-				.getSize().height / 2);
+		int ytmp = (int) ((physicalObject.y - Space.getCentrey())
+				/ Space.getScale() + Space.getFrame().getSize().height / 2);
 
 		graphics.fillOval(xtmp - diameter / 2, ytmp - diameter / 2, diameter,
 				diameter);
@@ -129,8 +133,8 @@ public class SolarSystem implements Game, MouseWheelListener,
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		Space.scale = Space.scale + Space.scale
-				* (Math.min(9, e.getWheelRotation())) / 10 + 0.0001;
+		Space.setScale(Space.getScale() + Space.getScale()
+				* (Math.min(9, e.getWheelRotation())) / 10 + 0.0001);
 
 		space.getGraphics()
 				.clearRect(0, 0, space.getWidth(), space.getHeight());
@@ -142,9 +146,11 @@ public class SolarSystem implements Game, MouseWheelListener,
 			lastDrag = e.getPoint();
 		}
 
-		Space.centrex = Space.centrex - ((e.getX() - lastDrag.x) * Space.scale);
+		Space.setCentrex(Space.getCentrex()
+				- ((e.getX() - lastDrag.x) * Space.getScale()));
 
-		Space.centrey = Space.centrey - ((e.getY() - lastDrag.y) * Space.scale);
+		Space.setCentrey(Space.getCentrey()
+				- ((e.getY() - lastDrag.y) * Space.getScale()));
 
 		lastDrag = e.getPoint();
 
