@@ -17,7 +17,7 @@ import space.bouncingballs.BouncingBalls;
 import space.solarsystem.SolarSystem;
 
 public class Space extends JFrame implements KeyListener {
-	public static final double EARTH_WEIGHT = 5.9736e24;
+
 	private static boolean IS_BOUNCING_BALLS = false;
 	static boolean IS_BREAKOUT = false; // Opens bottom, only active if
 										// IS_BOUNCING_BALLS is true

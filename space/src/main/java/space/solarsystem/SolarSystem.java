@@ -118,8 +118,7 @@ public class SolarSystem implements Game, MouseWheelListener,
 
 		graphics.setColor(Space.weightToColor(physicalObject.mass));
 
-		int diameter = physicalObject.mass >= Space.EARTH_WEIGHT * 10000 ? 7
-				: 2;
+		int diameter = physicalObject.mass >= EARTH_WEIGHT * 10000 ? 7 : 2;
 
 		int xtmp = (int) ((physicalObject.x - Space.getCentrex())
 				/ Space.getScale() + Space.getFrame().getSize().width / 2);
