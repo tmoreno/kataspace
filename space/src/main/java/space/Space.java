@@ -2,7 +2,6 @@ package space;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
@@ -51,7 +50,7 @@ public class Space extends JFrame implements KeyListener {
 		if (original != null) {
 			BufferedImage buffer = new BufferedImage(getWidth(), getHeight(),
 					BufferedImage.TYPE_INT_ARGB);
-			Graphics2D graphics = buffer.createGraphics();
+			GraphicsSwing graphics = new GraphicsSwing(buffer.createGraphics());
 
 			if (!showWake) {
 				graphics.clearRect(0, 0, getWidth(), getHeight());

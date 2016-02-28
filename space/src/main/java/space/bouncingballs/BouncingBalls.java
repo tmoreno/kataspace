@@ -1,11 +1,10 @@
 package space.bouncingballs;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
 import space.Game;
+import space.Graphics;
 import space.PhysicalObject;
 import space.Space;
 
@@ -92,8 +91,8 @@ public class BouncingBalls implements Game {
 
 	@Override
 	public void paintPhysicalObject(PhysicalObject physicalObject,
-			Graphics2D graphics) {
-		graphics.setColor(Color.WHITE);
+			Graphics graphics) {
+		graphics.setColorWhite();
 
 		int xtmp = (int) ((physicalObject.x - Space.getCentrex()) + Space
 				.getFrame().getSize().width / 2);
