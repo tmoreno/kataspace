@@ -81,12 +81,12 @@ public class SolarSystem implements Game, MouseWheelListener,
 			}
 			double ax = fx / aff.mass;
 			double ay = fy / aff.mass;
-			aff.x = aff.x - ax * Math.pow(Space.seconds, 2) / 2 + aff.vx
-					* Space.seconds;
-			aff.y = aff.y - ay * Math.pow(Space.seconds, 2) / 2 + aff.vy
-					* Space.seconds;
-			aff.vx = aff.vx - ax * Space.seconds;
-			aff.vy = aff.vy - ay * Space.seconds;
+			aff.x = aff.x - ax * Math.pow(Space.getSeconds(), 2) / 2 + aff.vx
+					* Space.getSeconds();
+			aff.y = aff.y - ay * Math.pow(Space.getSeconds(), 2) / 2 + aff.vy
+					* Space.getSeconds();
+			aff.vx = aff.vx - ax * Space.getSeconds();
+			aff.vy = aff.vy - ay * Space.getSeconds();
 		}
 	}
 

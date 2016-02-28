@@ -16,12 +16,12 @@ import space.solarsystem.SolarSystem;
 
 public class Space extends JFrame implements KeyListener {
 
+	private static final long serialVersionUID = 1532817796535372081L;
+
 	static boolean IS_BREAKOUT = false; // Opens bottom, only active if
 										// IS_BOUNCING_BALLS is true
 
-	private static final long serialVersionUID = 1532817796535372081L;
-
-	public static double seconds = 1;
+	private static double seconds = 1;
 	private static List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
 	private static double centrex = 0.0;
 	private static double centrey = 0.0;
@@ -149,6 +149,14 @@ public class Space extends JFrame implements KeyListener {
 
 	public void collide() {
 		game.collide();
+	}
+
+	public static double getSeconds() {
+		return seconds;
+	}
+
+	public static void setSeconds(double seconds) {
+		Space.seconds = seconds;
 	}
 
 }
