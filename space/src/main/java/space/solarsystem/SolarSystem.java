@@ -1,5 +1,6 @@
 package space.solarsystem;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -116,7 +117,7 @@ public class SolarSystem implements Game, MouseWheelListener,
 	public void paintPhysicalObject(PhysicalObject physicalObject,
 			Graphics2D graphics) {
 
-		graphics.setColor(Space.weightToColor(physicalObject.mass));
+		graphics.setColor(weightToColor(physicalObject.mass));
 
 		int diameter = physicalObject.mass >= EARTH_WEIGHT * 10000 ? 7 : 2;
 
@@ -128,6 +129,28 @@ public class SolarSystem implements Game, MouseWheelListener,
 
 		graphics.fillOval(xtmp - diameter / 2, ytmp - diameter / 2, diameter,
 				diameter);
+	}
+
+	private Color weightToColor(double weight) {
+		if (weight < 1e10)
+			return Color.GREEN;
+		if (weight < 1e12)
+			return Color.CYAN;
+		if (weight < 1e14)
+			return Color.MAGENTA;
+		if (weight < 1e16)
+			return Color.BLUE;
+		if (weight < 1e18)
+			return Color.GRAY;
+		if (weight < 1e20)
+			return Color.RED;
+		if (weight < 1e22)
+			return Color.ORANGE;
+		if (weight < 1e25)
+			return Color.PINK;
+		if (weight < 1e28)
+			return Color.YELLOW;
+		return Color.WHITE;
 	}
 
 	@Override
