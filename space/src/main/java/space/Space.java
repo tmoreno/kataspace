@@ -1,13 +1,11 @@
 package space;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +16,6 @@ import space.solarsystem.SolarSystem;
 
 public class Space extends JFrame implements KeyListener {
 
-	private static boolean IS_BOUNCING_BALLS = false;
 	static boolean IS_BREAKOUT = false; // Opens bottom, only active if
 										// IS_BOUNCING_BALLS is true
 
@@ -38,9 +35,7 @@ public class Space extends JFrame implements KeyListener {
 	private static Game game;
 
 	public Space(boolean isBouncingBalls) {
-		IS_BOUNCING_BALLS = isBouncingBalls;
-
-		if (IS_BOUNCING_BALLS) {
+		if (isBouncingBalls) {
 			game = new BouncingBalls(this);
 		}
 		else {
@@ -71,42 +66,6 @@ public class Space extends JFrame implements KeyListener {
 			original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);
 		}
 
-	}
-
-	public static void main(String[] args) throws InterruptedException,
-			InvocationTargetException {
-		final Space space = new Space(IS_BOUNCING_BALLS);
-		space.addKeyListener(space);
-		space.setSize(800, 820);
-
-		game.init();
-
-		space.setVisible(true);
-		while (true) {
-			final long start = System.currentTimeMillis();
-			EventQueue.invokeAndWait(new Runnable() {
-				public void run() {
-					game.collide();
-					space.step();
-				}
-			});
-			try {
-				long ahead = 1000 / frameRate
-						- (System.currentTimeMillis() - start);
-				if (ahead > 50) {
-					Thread.sleep(ahead);
-					if (frameRate < 25)
-						frameRate++;
-				}
-				else {
-					Thread.sleep(50);
-					frameRate--;
-				}
-			}
-			catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
 	}
 
 	public void setStepSize(double seconds) {
@@ -174,6 +133,22 @@ public class Space extends JFrame implements KeyListener {
 
 	public static boolean isBreackout() {
 		return IS_BREAKOUT;
+	}
+
+	public static int getFrameRate() {
+		return frameRate;
+	}
+
+	public static void setFrameRate(int frameRate) {
+		Space.frameRate = frameRate;
+	}
+
+	public void initGame() {
+		game.init();
+	}
+
+	public void collide() {
+		game.collide();
 	}
 
 }
