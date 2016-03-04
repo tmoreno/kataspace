@@ -1,10 +1,5 @@
 package space.solarsystem;
 
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +8,7 @@ import space.Graphics;
 import space.PhysicalObject;
 import space.Space;
 
-public class SolarSystem implements Game, MouseWheelListener,
-		MouseMotionListener {
+public class SolarSystem implements Game {
 
 	private static final double ASTRONOMICAL_UNIT = 149597870.7e3;
 	private static final double EARTH_WEIGHT = 5.9736e24;
@@ -23,13 +17,9 @@ public class SolarSystem implements Game, MouseWheelListener,
 	private static int nrOfObjects = 75;
 
 	private Space space;
-	private Point lastDrag;
 
 	public SolarSystem(Space space) {
 		this.space = space;
-
-		this.space.addMouseWheelListener(this);
-		this.space.addMouseMotionListener(this);
 	}
 
 	@Override
@@ -130,35 +120,4 @@ public class SolarSystem implements Game, MouseWheelListener,
 				diameter);
 	}
 
-	@Override
-	public void mouseWheelMoved(MouseWheelEvent e) {
-		Space.setScale(Space.getScale() + Space.getScale()
-				* (Math.min(9, e.getWheelRotation())) / 10 + 0.0001);
-
-		space.getGraphics()
-				.clearRect(0, 0, space.getWidth(), space.getHeight());
-	}
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		if (lastDrag == null) {
-			lastDrag = e.getPoint();
-		}
-
-		Space.setCentrex(Space.getCentrex()
-				- ((e.getX() - lastDrag.x) * Space.getScale()));
-
-		Space.setCentrey(Space.getCentrey()
-				- ((e.getY() - lastDrag.y) * Space.getScale()));
-
-		lastDrag = e.getPoint();
-
-		space.getGraphics()
-				.clearRect(0, 0, space.getWidth(), space.getHeight());
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		lastDrag = null;
-	}
 }

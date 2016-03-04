@@ -39,6 +39,10 @@ public class Space extends JFrame implements KeyListener {
 		}
 		else {
 			game = new SolarSystem(this);
+
+			MouseListener mouseListener = new MouseListener(this);
+			this.addMouseWheelListener(mouseListener);
+			this.addMouseMotionListener(mouseListener);
 		}
 
 		setBackground(Color.BLACK);
