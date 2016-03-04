@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import space.bouncingballs.BouncingBalls;
 import space.solarsystem.SolarSystem;
 import space.ui.swing.GraphicsSwing;
-import space.ui.swing.MouseListenerSwing;
 
 public class Space extends JFrame {
 
@@ -39,10 +38,6 @@ public class Space extends JFrame {
 		}
 		else {
 			game = new SolarSystem(this);
-
-			MouseListenerSwing mouseListener = new MouseListenerSwing(this);
-			this.addMouseWheelListener(mouseListener);
-			this.addMouseMotionListener(mouseListener);
 		}
 
 		setBackground(Color.BLACK);

@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.lang.reflect.InvocationTargetException;
 
 import space.ui.swing.KeyListenerSwing;
+import space.ui.swing.MouseListenerSwing;
 
 public class Main {
 
@@ -13,6 +14,13 @@ public class Main {
 			InvocationTargetException {
 
 		final Space space = new Space(IS_BOUNCING_BALLS);
+
+		if (!IS_BOUNCING_BALLS) {
+			MouseListenerSwing mouseListener = new MouseListenerSwing(space);
+			space.addMouseWheelListener(mouseListener);
+			space.addMouseMotionListener(mouseListener);
+		}
+
 		KeyListenerSwing keyListener = new KeyListenerSwing(space);
 		space.addKeyListener(keyListener);
 		space.setSize(800, 820);
