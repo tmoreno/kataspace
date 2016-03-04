@@ -1,4 +1,4 @@
-package space;
+package space.ui.swing;
 
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -6,12 +6,14 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-public class MouseListener implements MouseWheelListener, MouseMotionListener {
+import space.Space;
+
+public class MouseListenerSwing implements MouseWheelListener, MouseMotionListener {
 
 	private Space space;
 	private Point lastDrag;
 
-	public MouseListener(Space space) {
+	public MouseListenerSwing(Space space) {
 		this.space = space;
 	}
 

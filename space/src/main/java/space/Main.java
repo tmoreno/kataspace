@@ -3,6 +3,8 @@ package space;
 import java.awt.EventQueue;
 import java.lang.reflect.InvocationTargetException;
 
+import space.ui.swing.KeyListenerSwing;
+
 public class Main {
 
 	private static boolean IS_BOUNCING_BALLS = false;

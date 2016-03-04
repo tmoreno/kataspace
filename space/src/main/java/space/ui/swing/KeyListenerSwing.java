@@ -1,7 +1,9 @@
-package space;
+package space.ui.swing;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import space.Space;
 
 public class KeyListenerSwing implements KeyListener {
 
