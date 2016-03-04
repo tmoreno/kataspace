@@ -1,7 +1,9 @@
-package space;
+package space.ui.swing;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+
+import space.ui.Graphics;
 
 public class GraphicsSwing implements Graphics {
 

@@ -1,4 +1,4 @@
-package space;
+package space.ui;
 
 public interface Graphics {
 

@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 
 import space.bouncingballs.BouncingBalls;
 import space.solarsystem.SolarSystem;
+import space.ui.swing.GraphicsSwing;
 
 public class Space extends JFrame implements KeyListener {
 

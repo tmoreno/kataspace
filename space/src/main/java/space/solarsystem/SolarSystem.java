@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import space.Game;
-import space.Graphics;
 import space.PhysicalObject;
 import space.Space;
+import space.ui.Graphics;
 
 public class SolarSystem implements Game {
 

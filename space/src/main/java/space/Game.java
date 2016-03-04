@@ -1,5 +1,7 @@
 package space;
 
+import space.ui.Graphics;
+
 public interface Game {
 
 	void init();
