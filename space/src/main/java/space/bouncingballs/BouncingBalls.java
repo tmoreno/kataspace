@@ -94,11 +94,11 @@ public class BouncingBalls implements Game {
 			Graphics graphics) {
 		graphics.setColorWhite();
 
-		int xtmp = (int) ((physicalObject.x - Space.getCentrex()) + Space
-				.getFrame().getSize().width / 2);
+		int xtmp = (int) ((physicalObject.x - Space.getCentrex()) + space
+				.getFrameWidth() / 2);
 
-		int ytmp = (int) ((physicalObject.y - Space.getCentrey()) + Space
-				.getFrame().getSize().height / 2);
+		int ytmp = (int) ((physicalObject.y - Space.getCentrey()) + space
+				.getFrameHeight() / 2);
 
 		graphics.fillOval((int) (xtmp - physicalObject.radius),
 				(int) (ytmp - physicalObject.radius),

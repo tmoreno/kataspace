@@ -17,6 +17,8 @@ public class Main {
 		space.addKeyListener(keyListener);
 		space.setSize(800, 820);
 		space.initGame();
+		space.setFrameHeight(space.getSize().height);
+		space.setFrameWidth(space.getSize().width);
 		space.setVisible(true);
 
 		while (true) {

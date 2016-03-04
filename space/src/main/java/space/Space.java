@@ -29,9 +29,9 @@ public class Space extends JFrame {
 	private static int step = 0;
 	private static int frameRate = 25;
 
-	static JFrame frame;
-
 	private static Game game;
+	private int frameWidth;
+	private int frameHeight;
 
 	public Space(boolean isBouncingBalls) {
 		if (isBouncingBalls) {
@@ -46,7 +46,6 @@ public class Space extends JFrame {
 		}
 
 		setBackground(Color.BLACK);
-		Space.frame = this;
 	}
 
 	@Override
@@ -119,10 +118,6 @@ public class Space extends JFrame {
 		Space.centrey = centrey;
 	}
 
-	public static JFrame getFrame() {
-		return frame;
-	}
-
 	public static boolean isBreackout() {
 		return IS_BREAKOUT;
 	}
@@ -157,6 +152,22 @@ public class Space extends JFrame {
 
 	public static void setShowWake(boolean showWake) {
 		Space.showWake = showWake;
+	}
+
+	public int getFrameWidth() {
+		return frameWidth;
+	}
+
+	public void setFrameWidth(int frameWidth) {
+		this.frameWidth = frameWidth;
+	}
+
+	public int getFrameHeight() {
+		return frameHeight;
+	}
+
+	public void setFrameHeight(int frameHeight) {
+		this.frameHeight = frameHeight;
 	}
 
 }
