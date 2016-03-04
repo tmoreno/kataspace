@@ -2,8 +2,6 @@ package space;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +12,7 @@ import space.bouncingballs.BouncingBalls;
 import space.solarsystem.SolarSystem;
 import space.ui.swing.GraphicsSwing;
 
-public class Space extends JFrame implements KeyListener {
+public class Space extends JFrame {
 
 	private static final long serialVersionUID = 1532817796535372081L;
 
@@ -92,17 +90,6 @@ public class Space extends JFrame implements KeyListener {
 		paint(getGraphics());
 	}
 
-	public void keyPressed(KeyEvent e) {
-	}
-
-	public void keyReleased(KeyEvent e) {
-	}
-
-	public void keyTyped(KeyEvent e) {
-		if (e.getKeyChar() == 'w')
-			showWake = !showWake;
-	}
-
 	public static List<PhysicalObject> getObjects() {
 		return Space.objects;
 	}
@@ -161,6 +148,14 @@ public class Space extends JFrame implements KeyListener {
 
 	public static void setSeconds(double seconds) {
 		Space.seconds = seconds;
+	}
+
+	public static boolean isShowWake() {
+		return showWake;
+	}
+
+	public static void setShowWake(boolean showWake) {
+		Space.showWake = showWake;
 	}
 
 }

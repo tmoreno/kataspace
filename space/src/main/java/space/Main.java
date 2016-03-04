@@ -11,7 +11,8 @@ public class Main {
 			InvocationTargetException {
 
 		final Space space = new Space(IS_BOUNCING_BALLS);
-		space.addKeyListener(space);
+		KeyListenerSwing keyListener = new KeyListenerSwing(space);
+		space.addKeyListener(keyListener);
 		space.setSize(800, 820);
 		space.initGame();
 		space.setVisible(true);
