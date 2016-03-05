@@ -1,20 +1,12 @@
 package space;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-
 import space.bouncingballs.BouncingBalls;
 import space.solarsystem.SolarSystem;
-import space.ui.swing.GraphicsSwing;
 
-public class Space extends JFrame {
-
-	private static final long serialVersionUID = 1532817796535372081L;
+public class Space {
 
 	static boolean IS_BREAKOUT = false; // Opens bottom, only active if
 										// IS_BOUNCING_BALLS is true
@@ -29,6 +21,7 @@ public class Space extends JFrame {
 	private static int frameRate = 25;
 
 	private static Game game;
+	private int width;
 	private int frameWidth;
 	private int frameHeight;
 
@@ -39,30 +32,6 @@ public class Space extends JFrame {
 		else {
 			game = new SolarSystem(this);
 		}
-
-		setBackground(Color.BLACK);
-	}
-
-	@Override
-	public void paint(Graphics original) {
-		if (original != null) {
-			BufferedImage buffer = new BufferedImage(getWidth(), getHeight(),
-					BufferedImage.TYPE_INT_ARGB);
-			GraphicsSwing graphics = new GraphicsSwing(buffer.createGraphics());
-
-			if (!showWake) {
-				graphics.clearRect(0, 0, getWidth(), getHeight());
-			}
-			for (PhysicalObject po : objects) {
-				game.paintPhysicalObject(po, graphics);
-
-				String string = "Objects:" + objects.size() + " scale:" + scale
-						+ " steps:" + step + " frame rate: " + frameRate;
-				setTitle(string);
-			}
-			original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);
-		}
-
 	}
 
 	public void setStepSize(double seconds) {
@@ -81,8 +50,6 @@ public class Space extends JFrame {
 		game.step();
 
 		step++;
-
-		paint(getGraphics());
 	}
 
 	public static List<PhysicalObject> getObjects() {
@@ -163,6 +130,26 @@ public class Space extends JFrame {
 
 	public void setFrameHeight(int frameHeight) {
 		this.frameHeight = frameHeight;
+	}
+
+	public static int getStep() {
+		return step;
+	}
+
+	public static void setStep(int step) {
+		Space.step = step;
+	}
+
+	public static Game getGame() {
+		return game;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
 	}
 
 }

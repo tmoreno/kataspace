@@ -3,6 +3,9 @@ package space;
 import java.awt.EventQueue;
 import java.lang.reflect.InvocationTargetException;
 
+import javax.swing.JFrame;
+
+import space.ui.swing.FrameSwing;
 import space.ui.swing.KeyListenerSwing;
 import space.ui.swing.MouseListenerSwing;
 
@@ -13,21 +16,24 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException,
 			InvocationTargetException {
 
-		final Space space = new Space(IS_BOUNCING_BALLS);
+		Space space = new Space(IS_BOUNCING_BALLS);
+		JFrame frame = new FrameSwing();
 
 		if (!IS_BOUNCING_BALLS) {
-			MouseListenerSwing mouseListener = new MouseListenerSwing(space);
-			space.addMouseWheelListener(mouseListener);
-			space.addMouseMotionListener(mouseListener);
+			MouseListenerSwing mouseListener = new MouseListenerSwing(space,
+					frame);
+			frame.addMouseWheelListener(mouseListener);
+			frame.addMouseMotionListener(mouseListener);
 		}
 
 		KeyListenerSwing keyListener = new KeyListenerSwing(space);
-		space.addKeyListener(keyListener);
-		space.setSize(800, 820);
+		frame.addKeyListener(keyListener);
+		frame.setSize(800, 820);
+		frame.setVisible(true);
+		space.setWidth(frame.getWidth());
+		space.setFrameHeight(frame.getSize().height);
+		space.setFrameWidth(frame.getSize().width);
 		space.initGame();
-		space.setFrameHeight(space.getSize().height);
-		space.setFrameWidth(space.getSize().width);
-		space.setVisible(true);
 
 		while (true) {
 			final long start = System.currentTimeMillis();
@@ -36,6 +42,7 @@ public class Main {
 				public void run() {
 					space.collide();
 					space.step();
+					frame.paint(frame.getGraphics());
 				}
 			});
 

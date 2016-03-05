@@ -6,15 +6,20 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
+import javax.swing.JFrame;
+
 import space.Space;
 
-public class MouseListenerSwing implements MouseWheelListener, MouseMotionListener {
+public class MouseListenerSwing implements MouseWheelListener,
+		MouseMotionListener {
 
 	private Space space;
+	private JFrame frame;
 	private Point lastDrag;
 
-	public MouseListenerSwing(Space space) {
+	public MouseListenerSwing(Space space, JFrame frame) {
 		this.space = space;
+		this.frame = frame;
 	}
 
 	@Override
@@ -22,8 +27,8 @@ public class MouseListenerSwing implements MouseWheelListener, MouseMotionListen
 		Space.setScale(Space.getScale() + Space.getScale()
 				* (Math.min(9, e.getWheelRotation())) / 10 + 0.0001);
 
-		space.getGraphics()
-				.clearRect(0, 0, space.getWidth(), space.getHeight());
+		frame.getGraphics()
+				.clearRect(0, 0, frame.getWidth(), frame.getHeight());
 	}
 
 	@Override
@@ -40,8 +45,8 @@ public class MouseListenerSwing implements MouseWheelListener, MouseMotionListen
 
 		lastDrag = e.getPoint();
 
-		space.getGraphics()
-				.clearRect(0, 0, space.getWidth(), space.getHeight());
+		frame.getGraphics()
+				.clearRect(0, 0, frame.getWidth(), frame.getHeight());
 	}
 
 	@Override
