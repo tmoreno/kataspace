@@ -36,9 +36,10 @@ public class BouncingBalls implements Game {
 	public void step() {
 		for (PhysicalObject physicalObject : Space.getObjects()) {
 			physicalObject.x = physicalObject.x + physicalObject.vx
-					* Space.getSeconds();
+					* space.getSeconds();
+
 			physicalObject.y = physicalObject.y + physicalObject.vy
-					* Space.getSeconds();
+					* space.getSeconds();
 		}
 	}
 
@@ -60,7 +61,7 @@ public class BouncingBalls implements Game {
 				double collsionDistance = one.radius + other.radius;
 
 				if (distance < collsionDistance) {
-					one.hitBy(other, Space.getSeconds());
+					one.hitBy(other, space.getSeconds());
 				}
 			}
 

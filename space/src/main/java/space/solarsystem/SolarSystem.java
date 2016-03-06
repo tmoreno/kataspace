@@ -68,12 +68,12 @@ public class SolarSystem implements Game {
 			}
 			double ax = fx / aff.mass;
 			double ay = fy / aff.mass;
-			aff.x = aff.x - ax * Math.pow(Space.getSeconds(), 2) / 2 + aff.vx
-					* Space.getSeconds();
-			aff.y = aff.y - ay * Math.pow(Space.getSeconds(), 2) / 2 + aff.vy
-					* Space.getSeconds();
-			aff.vx = aff.vx - ax * Space.getSeconds();
-			aff.vy = aff.vy - ay * Space.getSeconds();
+			aff.x = aff.x - ax * Math.pow(space.getSeconds(), 2) / 2 + aff.vx
+					* space.getSeconds();
+			aff.y = aff.y - ay * Math.pow(space.getSeconds(), 2) / 2 + aff.vy
+					* space.getSeconds();
+			aff.vx = aff.vx - ax * space.getSeconds();
+			aff.vy = aff.vy - ay * space.getSeconds();
 		}
 	}
 

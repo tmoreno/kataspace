@@ -11,7 +11,7 @@ public class Space {
 	static boolean IS_BREAKOUT = false; // Opens bottom, only active if
 										// IS_BOUNCING_BALLS is true
 
-	private static double seconds = 1;
+	private double seconds;
 	private static List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
 	private static double centrex = 0.0;
 	private static double centrey = 0.0;
@@ -35,10 +35,12 @@ public class Space {
 			game = new SolarSystem(this);
 			nrOfObjects = 75;
 		}
+
+		seconds = 1;
 	}
 
 	public void setStepSize(double seconds) {
-		Space.seconds = seconds;
+		this.seconds = seconds;
 	}
 
 	public static PhysicalObject add(double weightKilos, double x, double y,
@@ -103,12 +105,12 @@ public class Space {
 		game.collide();
 	}
 
-	public static double getSeconds() {
+	public double getSeconds() {
 		return seconds;
 	}
 
-	public static void setSeconds(double seconds) {
-		Space.seconds = seconds;
+	public void setSeconds(double seconds) {
+		this.seconds = seconds;
 	}
 
 	public static boolean isShowWake() {
