@@ -23,7 +23,7 @@ public class BouncingBalls implements Game {
 			// radius,weight in [1,20]
 			double radiusAndWeight = 1 + 19 * Math.random();
 			// x,y in [max radius, width or height - max radius]
-			Space.add(radiusAndWeight, 20 + 760 * Math.random(),
+			space.add(radiusAndWeight, 20 + 760 * Math.random(),
 					20 + 760 * Math.random(), 3 - 6 * Math.random(),
 					3 - 6 * Math.random(), radiusAndWeight);
 		}
@@ -34,7 +34,7 @@ public class BouncingBalls implements Game {
 
 	@Override
 	public void step() {
-		for (PhysicalObject physicalObject : Space.getObjects()) {
+		for (PhysicalObject physicalObject : space.getObjects()) {
 			physicalObject.x = physicalObject.x + physicalObject.vx
 					* space.getSeconds();
 
@@ -47,11 +47,11 @@ public class BouncingBalls implements Game {
 	public void collide() {
 		List<PhysicalObject> remove = new ArrayList<PhysicalObject>();
 
-		for (PhysicalObject one : Space.getObjects()) {
+		for (PhysicalObject one : space.getObjects()) {
 			if (remove.contains(one))
 				continue;
 
-			for (PhysicalObject other : Space.getObjects()) {
+			for (PhysicalObject other : space.getObjects()) {
 				if (one == other || remove.contains(other))
 					continue;
 
@@ -85,7 +85,7 @@ public class BouncingBalls implements Game {
 			}
 		}
 
-		Space.getObjects().removeAll(remove);
+		space.getObjects().removeAll(remove);
 	}
 
 	@Override

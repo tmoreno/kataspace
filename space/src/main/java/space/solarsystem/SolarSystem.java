@@ -38,12 +38,12 @@ public class SolarSystem implements Game {
 
 			double vx = speedRandom * Math.sin(angle - Math.PI / 2);
 			double vy = speedRandom * Math.cos(angle - Math.PI / 2);
-			Space.add(weightKilos, x, y, vx, vy, 1);
+			space.add(weightKilos, x, y, vx, vy, 1);
 		}
 
 		Space.setScale(outerLimit / space.getWidth());
 
-		Space.add(EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
+		space.add(EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
 	}
 
 	private double randSquare() {
@@ -53,10 +53,10 @@ public class SolarSystem implements Game {
 
 	@Override
 	public void step() {
-		for (PhysicalObject aff : Space.getObjects()) {
+		for (PhysicalObject aff : space.getObjects()) {
 			double fx = 0;
 			double fy = 0;
-			for (PhysicalObject oth : Space.getObjects()) {
+			for (PhysicalObject oth : space.getObjects()) {
 				if (aff == oth)
 					continue;
 				double[] d = new double[] { aff.x - oth.x, aff.y - oth.y };
@@ -81,11 +81,11 @@ public class SolarSystem implements Game {
 	public void collide() {
 		List<PhysicalObject> remove = new ArrayList<PhysicalObject>();
 
-		for (PhysicalObject one : Space.getObjects()) {
+		for (PhysicalObject one : space.getObjects()) {
 			if (remove.contains(one))
 				continue;
 
-			for (PhysicalObject other : Space.getObjects()) {
+			for (PhysicalObject other : space.getObjects()) {
 				if (one == other || remove.contains(other))
 					continue;
 
@@ -97,7 +97,7 @@ public class SolarSystem implements Game {
 			}
 		}
 
-		Space.getObjects().removeAll(remove);
+		space.getObjects().removeAll(remove);
 	}
 
 	@Override

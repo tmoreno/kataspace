@@ -12,7 +12,7 @@ public class Space {
 										// IS_BOUNCING_BALLS is true
 
 	private double seconds;
-	private static List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
+	private List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
 	private static double centrex = 0.0;
 	private static double centrey = 0.0;
 	private static double scale = 10;
@@ -43,7 +43,7 @@ public class Space {
 		this.seconds = seconds;
 	}
 
-	public static PhysicalObject add(double weightKilos, double x, double y,
+	public PhysicalObject add(double weightKilos, double x, double y,
 			double vx, double vy, double radius) {
 		PhysicalObject physicalObject = new PhysicalObject(weightKilos, x, y,
 				vx, vy, radius);
@@ -57,8 +57,8 @@ public class Space {
 		step++;
 	}
 
-	public static List<PhysicalObject> getObjects() {
-		return Space.objects;
+	public List<PhysicalObject> getObjects() {
+		return objects;
 	}
 
 	public static double getScale() {

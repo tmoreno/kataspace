@@ -31,10 +31,10 @@ public class FrameSwing extends JFrame {
 			if (!Space.isShowWake()) {
 				graphics.clearRect(0, 0, getWidth(), getHeight());
 			}
-			for (PhysicalObject po : Space.getObjects()) {
+			for (PhysicalObject po : space.getObjects()) {
 				space.getGame().paintPhysicalObject(po, graphics);
 
-				String string = "Objects:" + Space.getObjects().size()
+				String string = "Objects:" + space.getObjects().size()
 						+ " scale:" + Space.getScale() + " steps:"
 						+ Space.getStep() + " frame rate: "
 						+ Space.getFrameRate();
