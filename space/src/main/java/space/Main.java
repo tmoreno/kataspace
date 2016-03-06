@@ -17,7 +17,7 @@ public class Main {
 			InvocationTargetException {
 
 		Space space = new Space(IS_BOUNCING_BALLS);
-		JFrame frame = new FrameSwing();
+		JFrame frame = new FrameSwing(space);
 
 		if (!IS_BOUNCING_BALLS) {
 			MouseListenerSwing mouseListener = new MouseListenerSwing(space,

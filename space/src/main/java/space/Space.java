@@ -21,7 +21,7 @@ public class Space {
 	private static int frameRate = 25;
 
 	private int nrOfObjects;
-	private static Game game;
+	private Game game;
 	private int width;
 	private int frameWidth;
 	private int frameHeight;
@@ -143,7 +143,7 @@ public class Space {
 		Space.step = step;
 	}
 
-	public static Game getGame() {
+	public Game getGame() {
 		return game;
 	}
 

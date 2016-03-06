@@ -13,7 +13,11 @@ public class FrameSwing extends JFrame {
 
 	private static final long serialVersionUID = -184389870166680868L;
 
-	public FrameSwing() {
+	private Space space;
+
+	public FrameSwing(Space space) {
+		this.space = space;
+
 		setBackground(Color.BLACK);
 	}
 
@@ -28,7 +32,7 @@ public class FrameSwing extends JFrame {
 				graphics.clearRect(0, 0, getWidth(), getHeight());
 			}
 			for (PhysicalObject po : Space.getObjects()) {
-				Space.getGame().paintPhysicalObject(po, graphics);
+				space.getGame().paintPhysicalObject(po, graphics);
 
 				String string = "Objects:" + Space.getObjects().size()
 						+ " scale:" + Space.getScale() + " steps:"
