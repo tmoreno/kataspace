@@ -14,8 +14,6 @@ public class SolarSystem implements Game {
 	private static final double EARTH_WEIGHT = 5.9736e24;
 	private static final double G = 6.67428e-11; // m3/kgs2
 
-	private static int nrOfObjects = 75;
-
 	private Space space;
 
 	public SolarSystem(Space space) {
@@ -28,7 +26,7 @@ public class SolarSystem implements Game {
 
 		double outerLimit = ASTRONOMICAL_UNIT * 20;
 
-		for (int i = 0; i < nrOfObjects; i++) {
+		for (int i = 0; i < space.getNrOfObjects(); i++) {
 			double angle = randSquare() * 2 * Math.PI;
 			double radius = (0.1 + 0.9 * Math.sqrt(randSquare())) * outerLimit;
 			double weightKilos = 1e3 * EARTH_WEIGHT

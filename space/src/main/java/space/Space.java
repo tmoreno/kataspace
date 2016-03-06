@@ -20,6 +20,7 @@ public class Space {
 	private static int step = 0;
 	private static int frameRate = 25;
 
+	private int nrOfObjects;
 	private static Game game;
 	private int width;
 	private int frameWidth;
@@ -28,9 +29,11 @@ public class Space {
 	public Space(boolean isBouncingBalls) {
 		if (isBouncingBalls) {
 			game = new BouncingBalls(this);
+			nrOfObjects = 50;
 		}
 		else {
 			game = new SolarSystem(this);
+			nrOfObjects = 75;
 		}
 	}
 
@@ -150,6 +153,14 @@ public class Space {
 
 	public void setWidth(int width) {
 		this.width = width;
+	}
+
+	public int getNrOfObjects() {
+		return nrOfObjects;
+	}
+
+	public void setNrOfObjects(int nrOfObjects) {
+		this.nrOfObjects = nrOfObjects;
 	}
 
 }

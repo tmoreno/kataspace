@@ -10,8 +10,6 @@ import space.ui.Graphics;
 
 public class BouncingBalls implements Game {
 
-	private static int nrOfObjects = 50;
-
 	private Space space;
 
 	public BouncingBalls(Space space) {
@@ -21,7 +19,7 @@ public class BouncingBalls implements Game {
 	@Override
 	public void init() {
 		space.setStepSize(1); // One second per iteration
-		for (int i = 0; i < nrOfObjects; i++) {
+		for (int i = 0; i < space.getNrOfObjects(); i++) {
 			// radius,weight in [1,20]
 			double radiusAndWeight = 1 + 19 * Math.random();
 			// x,y in [max radius, width or height - max radius]
