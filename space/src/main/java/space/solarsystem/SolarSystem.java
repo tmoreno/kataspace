@@ -107,17 +107,17 @@ public class SolarSystem implements Game {
 
 	@Override
 	public void paintPhysicalObject(PhysicalObject physicalObject,
-			Graphics graphics) {
+			Graphics graphics, int frameWidth, int frameHeight) {
 
 		graphics.setColorByWeight(physicalObject.mass);
 
 		int diameter = physicalObject.mass >= EARTH_WEIGHT * 10000 ? 7 : 2;
 
 		int xtmp = (int) ((physicalObject.x - space.getCentrex())
-				/ space.getScale() + space.getFrameWidth() / 2);
+				/ space.getScale() + frameWidth / 2);
 
 		int ytmp = (int) ((physicalObject.y - space.getCentrey())
-				/ space.getScale() + space.getFrameHeight() / 2);
+				/ space.getScale() + frameHeight / 2);
 
 		graphics.fillOval(xtmp - diameter / 2, ytmp - diameter / 2, diameter,
 				diameter);

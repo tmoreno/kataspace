@@ -97,14 +97,12 @@ public class BouncingBalls implements Game {
 
 	@Override
 	public void paintPhysicalObject(PhysicalObject physicalObject,
-			Graphics graphics) {
+			Graphics graphics, int frameWidth, int frameHeight) {
 		graphics.setColorWhite();
 
-		int xtmp = (int) ((physicalObject.x - space.getCentrex()) + space
-				.getFrameWidth() / 2);
+		int xtmp = (int) ((physicalObject.x - space.getCentrex()) + frameWidth / 2);
 
-		int ytmp = (int) ((physicalObject.y - space.getCentrey()) + space
-				.getFrameHeight() / 2);
+		int ytmp = (int) ((physicalObject.y - space.getCentrey()) + frameHeight / 2);
 
 		graphics.fillOval((int) (xtmp - physicalObject.radius),
 				(int) (ytmp - physicalObject.radius),

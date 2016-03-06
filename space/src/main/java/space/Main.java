@@ -40,8 +40,6 @@ public class Main {
 		frame.setSize(800, 820);
 		frame.setVisible(true);
 		space.setWidth(frame.getWidth());
-		space.setFrameHeight(frame.getSize().height);
-		space.setFrameWidth(frame.getSize().width);
 		game.init();
 
 		while (true) {

@@ -35,7 +35,8 @@ public class FrameSwing extends JFrame {
 				graphics.clearRect(0, 0, getWidth(), getHeight());
 			}
 			for (PhysicalObject po : space.getObjects()) {
-				game.paintPhysicalObject(po, graphics);
+				game.paintPhysicalObject(po, graphics, getSize().width,
+						getSize().height);
 
 				String string = "Objects:" + space.getObjects().size()
 						+ " scale:" + space.getScale() + " steps:"

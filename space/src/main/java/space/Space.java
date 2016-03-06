@@ -14,8 +14,6 @@ public class Space {
 	private int frameRate;
 
 	private int width;
-	private int frameWidth;
-	private int frameHeight;
 
 	public Space() {
 		seconds = 1;
@@ -91,22 +89,6 @@ public class Space {
 
 	public void setShowWake(boolean showWake) {
 		this.showWake = showWake;
-	}
-
-	public int getFrameWidth() {
-		return frameWidth;
-	}
-
-	public void setFrameWidth(int frameWidth) {
-		this.frameWidth = frameWidth;
-	}
-
-	public int getFrameHeight() {
-		return frameHeight;
-	}
-
-	public void setFrameHeight(int frameHeight) {
-		this.frameHeight = frameHeight;
 	}
 
 	public int getWidth() {
