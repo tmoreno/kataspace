@@ -11,10 +11,8 @@ public class Space {
 	private double centrey;
 	private double scale;
 	private boolean showWake;
-	private int step;
 	private int frameRate;
 
-	private Game game;
 	private int width;
 	private int frameWidth;
 	private int frameHeight;
@@ -26,7 +24,6 @@ public class Space {
 		centrey = 0.0;
 		scale = 10;
 		showWake = false;
-		step = 0;
 		frameRate = 25;
 	}
 
@@ -38,14 +35,10 @@ public class Space {
 			double vx, double vy, double radius) {
 		PhysicalObject physicalObject = new PhysicalObject(weightKilos, x, y,
 				vx, vy, radius);
+
 		objects.add(physicalObject);
+
 		return physicalObject;
-	}
-
-	public void step() {
-		game.step();
-
-		step++;
 	}
 
 	public List<PhysicalObject> getObjects() {
@@ -84,14 +77,6 @@ public class Space {
 		this.frameRate = frameRate;
 	}
 
-	public void initGame() {
-		game.init();
-	}
-
-	public void collide() {
-		game.collide();
-	}
-
 	public double getSeconds() {
 		return seconds;
 	}
@@ -124,18 +109,6 @@ public class Space {
 		this.frameHeight = frameHeight;
 	}
 
-	public int getStep() {
-		return step;
-	}
-
-	public void setStep(int step) {
-		this.step = step;
-	}
-
-	public Game getGame() {
-		return game;
-	}
-
 	public int getWidth() {
 		return width;
 	}
@@ -143,9 +116,4 @@ public class Space {
 	public void setWidth(int width) {
 		this.width = width;
 	}
-
-	public void setGame(Game game) {
-		this.game = game;
-	}
-
 }

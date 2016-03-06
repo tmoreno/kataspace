@@ -17,7 +17,6 @@ public class Main {
 			InvocationTargetException {
 
 		Space space = new Space();
-		JFrame frame = new FrameSwing(space);
 
 		Game game;
 		if (isBouncingBalls(args)) {
@@ -25,31 +24,33 @@ public class Main {
 		}
 		else {
 			game = new SolarSystem(space, 75);
+		}
 
+		JFrame frame = new FrameSwing(space, game);
+		KeyListenerSwing keyListener = new KeyListenerSwing(space);
+		frame.addKeyListener(keyListener);
+
+		if (!isBouncingBalls(args)) {
 			MouseListenerSwing mouseListener = new MouseListenerSwing(space,
 					frame);
 			frame.addMouseWheelListener(mouseListener);
 			frame.addMouseMotionListener(mouseListener);
 		}
 
-		space.setGame(game);
-
-		KeyListenerSwing keyListener = new KeyListenerSwing(space);
-		frame.addKeyListener(keyListener);
 		frame.setSize(800, 820);
 		frame.setVisible(true);
 		space.setWidth(frame.getWidth());
 		space.setFrameHeight(frame.getSize().height);
 		space.setFrameWidth(frame.getSize().width);
-		space.initGame();
+		game.init();
 
 		while (true) {
 			final long start = System.currentTimeMillis();
 
 			EventQueue.invokeAndWait(new Runnable() {
 				public void run() {
-					space.collide();
-					space.step();
+					game.collide();
+					game.step();
 					frame.paint(frame.getGraphics());
 				}
 			});

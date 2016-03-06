@@ -11,4 +11,6 @@ public interface Game {
 	void collide();
 
 	void paintPhysicalObject(PhysicalObject physicalObject, Graphics graphics);
+
+	int getStep();
 }
