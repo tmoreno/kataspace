@@ -13,7 +13,7 @@ public class TestBounce {
 
 	@Before
 	public void setUp() {
-		space = new Space(false);
+		space = new Space();
 	}
 
 	@Test

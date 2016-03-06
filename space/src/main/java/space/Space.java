@@ -3,9 +3,6 @@ package space;
 import java.util.ArrayList;
 import java.util.List;
 
-import space.bouncingballs.BouncingBalls;
-import space.solarsystem.SolarSystem;
-
 public class Space {
 
 	static boolean IS_BREAKOUT = false; // Opens bottom, only active if
@@ -26,16 +23,7 @@ public class Space {
 	private int frameWidth;
 	private int frameHeight;
 
-	public Space(boolean isBouncingBalls) {
-		if (isBouncingBalls) {
-			game = new BouncingBalls(this);
-			nrOfObjects = 50;
-		}
-		else {
-			game = new SolarSystem(this);
-			nrOfObjects = 75;
-		}
-
+	public Space() {
 		seconds = 1;
 		objects = new ArrayList<PhysicalObject>();
 		centrex = 0.0;
@@ -170,6 +158,10 @@ public class Space {
 
 	public void setNrOfObjects(int nrOfObjects) {
 		this.nrOfObjects = nrOfObjects;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
 	}
 
 }

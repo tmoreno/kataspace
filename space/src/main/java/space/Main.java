@@ -5,26 +5,36 @@ import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JFrame;
 
+import space.bouncingballs.BouncingBalls;
+import space.solarsystem.SolarSystem;
 import space.ui.swing.FrameSwing;
 import space.ui.swing.KeyListenerSwing;
 import space.ui.swing.MouseListenerSwing;
 
 public class Main {
 
-	private static boolean IS_BOUNCING_BALLS = false;
-
 	public static void main(String[] args) throws InterruptedException,
 			InvocationTargetException {
 
-		Space space = new Space(IS_BOUNCING_BALLS);
+		Space space = new Space();
 		JFrame frame = new FrameSwing(space);
 
-		if (!IS_BOUNCING_BALLS) {
+		Game game;
+		if (isBouncingBalls(args)) {
+			game = new BouncingBalls(space);
+			space.setNrOfObjects(50);
+		}
+		else {
+			game = new SolarSystem(space);
+			space.setNrOfObjects(75);
+
 			MouseListenerSwing mouseListener = new MouseListenerSwing(space,
 					frame);
 			frame.addMouseWheelListener(mouseListener);
 			frame.addMouseMotionListener(mouseListener);
 		}
+
+		space.setGame(game);
 
 		KeyListenerSwing keyListener = new KeyListenerSwing(space);
 		frame.addKeyListener(keyListener);
@@ -65,5 +75,9 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private static Boolean isBouncingBalls(String[] args) {
+		return Boolean.valueOf(args[0]);
 	}
 }

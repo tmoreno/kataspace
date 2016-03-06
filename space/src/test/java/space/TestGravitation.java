@@ -4,11 +4,14 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import space.solarsystem.SolarSystem;
+
 public class TestGravitation {
 
 	@Test
 	public void gravitationalFormulaIsCorrect() throws Exception {
-		Space s = new Space(false);
+		Space s = new Space();
+		s.setGame(new SolarSystem(s));
 		s.setStepSize(1);
 		double earthsWeight = 5.9736e24;
 		int earthsRadius = 6371000;
