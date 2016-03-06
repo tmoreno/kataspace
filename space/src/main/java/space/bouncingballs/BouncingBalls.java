@@ -11,9 +11,11 @@ import space.ui.Graphics;
 public class BouncingBalls implements Game {
 
 	private Space space;
+	private boolean isBreackout;
 
-	public BouncingBalls(Space space) {
+	public BouncingBalls(Space space, boolean isBreackout) {
 		this.space = space;
+		this.isBreackout = isBreackout;
 	}
 
 	@Override
@@ -77,7 +79,7 @@ public class BouncingBalls implements Game {
 				one.vy = -one.vy;
 			}
 
-			if (one.y + one.radius > 800 && !Space.isBreackout()) {
+			if (one.y + one.radius > 800 && !isBreackout) {
 				one.vy = -one.vy;
 			}
 			else if (one.y - one.radius > 800) {

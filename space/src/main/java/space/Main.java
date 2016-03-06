@@ -21,7 +21,7 @@ public class Main {
 
 		Game game;
 		if (isBouncingBalls(args)) {
-			game = new BouncingBalls(space);
+			game = new BouncingBalls(space, isBreakOut(args));
 			space.setNrOfObjects(50);
 		}
 		else {
@@ -79,5 +79,9 @@ public class Main {
 
 	private static Boolean isBouncingBalls(String[] args) {
 		return Boolean.valueOf(args[0]);
+	}
+
+	private static boolean isBreakOut(String[] args) {
+		return Boolean.valueOf(args[1]);
 	}
 }

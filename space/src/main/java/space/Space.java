@@ -5,9 +5,6 @@ import java.util.List;
 
 public class Space {
 
-	static boolean IS_BREAKOUT = false; // Opens bottom, only active if
-										// IS_BOUNCING_BALLS is true
-
 	private double seconds;
 	private List<PhysicalObject> objects;
 	private double centrex;
@@ -78,10 +75,6 @@ public class Space {
 
 	public void setCentrey(double centrey) {
 		this.centrey = centrey;
-	}
-
-	public static boolean isBreackout() {
-		return IS_BREAKOUT;
 	}
 
 	public int getFrameRate() {
