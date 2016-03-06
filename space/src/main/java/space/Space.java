@@ -15,7 +15,7 @@ public class Space {
 	private List<PhysicalObject> objects;
 	private double centrex;
 	private double centrey;
-	private static double scale = 10;
+	private double scale = 10;
 	private static boolean showWake = false;
 	private static int step = 0;
 	private static int frameRate = 25;
@@ -40,6 +40,7 @@ public class Space {
 		objects = new ArrayList<PhysicalObject>();
 		centrex = 0.0;
 		centrey = 0.0;
+		scale = 10;
 	}
 
 	public void setStepSize(double seconds) {
@@ -64,12 +65,12 @@ public class Space {
 		return objects;
 	}
 
-	public static double getScale() {
+	public double getScale() {
 		return scale;
 	}
 
-	public static void setScale(double scale) {
-		Space.scale = scale;
+	public void setScale(double scale) {
+		this.scale = scale;
 	}
 
 	public double getCentrex() {

@@ -35,7 +35,7 @@ public class FrameSwing extends JFrame {
 				space.getGame().paintPhysicalObject(po, graphics);
 
 				String string = "Objects:" + space.getObjects().size()
-						+ " scale:" + Space.getScale() + " steps:"
+						+ " scale:" + space.getScale() + " steps:"
 						+ Space.getStep() + " frame rate: "
 						+ Space.getFrameRate();
 				setTitle(string);

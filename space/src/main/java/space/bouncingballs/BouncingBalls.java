@@ -27,7 +27,7 @@ public class BouncingBalls implements Game {
 					20 + 760 * Math.random(), 3 - 6 * Math.random(),
 					3 - 6 * Math.random(), radiusAndWeight);
 		}
-		Space.setScale(1);
+		space.setScale(1);
 		space.setCentrex(400);
 		space.setCentrey(390); // Must compensate for title bar
 	}

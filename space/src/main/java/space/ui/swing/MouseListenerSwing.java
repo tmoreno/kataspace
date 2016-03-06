@@ -24,7 +24,7 @@ public class MouseListenerSwing implements MouseWheelListener,
 
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		Space.setScale(Space.getScale() + Space.getScale()
+		space.setScale(space.getScale() + space.getScale()
 				* (Math.min(9, e.getWheelRotation())) / 10 + 0.0001);
 
 		frame.getGraphics()
@@ -38,10 +38,10 @@ public class MouseListenerSwing implements MouseWheelListener,
 		}
 
 		space.setCentrex(space.getCentrex()
-				- ((e.getX() - lastDrag.x) * Space.getScale()));
+				- ((e.getX() - lastDrag.x) * space.getScale()));
 
 		space.setCentrey(space.getCentrey()
-				- ((e.getY() - lastDrag.y) * Space.getScale()));
+				- ((e.getY() - lastDrag.y) * space.getScale()));
 
 		lastDrag = e.getPoint();
 

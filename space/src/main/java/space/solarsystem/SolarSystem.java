@@ -41,7 +41,7 @@ public class SolarSystem implements Game {
 			space.add(weightKilos, x, y, vx, vy, 1);
 		}
 
-		Space.setScale(outerLimit / space.getWidth());
+		space.setScale(outerLimit / space.getWidth());
 
 		space.add(EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
 	}
@@ -109,10 +109,10 @@ public class SolarSystem implements Game {
 		int diameter = physicalObject.mass >= EARTH_WEIGHT * 10000 ? 7 : 2;
 
 		int xtmp = (int) ((physicalObject.x - space.getCentrex())
-				/ Space.getScale() + space.getFrameWidth() / 2);
+				/ space.getScale() + space.getFrameWidth() / 2);
 
 		int ytmp = (int) ((physicalObject.y - space.getCentrey())
-				/ Space.getScale() + space.getFrameHeight() / 2);
+				/ space.getScale() + space.getFrameHeight() / 2);
 
 		graphics.fillOval(xtmp - diameter / 2, ytmp - diameter / 2, diameter,
 				diameter);
