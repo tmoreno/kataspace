@@ -11,7 +11,7 @@ public class TestGravitation {
 	@Test
 	public void gravitationalFormulaIsCorrect() throws Exception {
 		Space s = new Space();
-		s.setGame(new SolarSystem(s));
+		s.setGame(new SolarSystem(s, 75));
 		s.setStepSize(1);
 		double earthsWeight = 5.9736e24;
 		int earthsRadius = 6371000;

@@ -14,7 +14,6 @@ public class Space {
 	private int step;
 	private int frameRate;
 
-	private int nrOfObjects;
 	private Game game;
 	private int width;
 	private int frameWidth;
@@ -143,14 +142,6 @@ public class Space {
 
 	public void setWidth(int width) {
 		this.width = width;
-	}
-
-	public int getNrOfObjects() {
-		return nrOfObjects;
-	}
-
-	public void setNrOfObjects(int nrOfObjects) {
-		this.nrOfObjects = nrOfObjects;
 	}
 
 	public void setGame(Game game) {

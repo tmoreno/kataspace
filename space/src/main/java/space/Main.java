@@ -21,12 +21,10 @@ public class Main {
 
 		Game game;
 		if (isBouncingBalls(args)) {
-			game = new BouncingBalls(space, isBreakOut(args));
-			space.setNrOfObjects(50);
+			game = new BouncingBalls(space, 50, isBreakOut(args));
 		}
 		else {
-			game = new SolarSystem(space);
-			space.setNrOfObjects(75);
+			game = new SolarSystem(space, 75);
 
 			MouseListenerSwing mouseListener = new MouseListenerSwing(space,
 					frame);

@@ -11,17 +11,19 @@ import space.ui.Graphics;
 public class BouncingBalls implements Game {
 
 	private Space space;
+	private int nrOfObjects;
 	private boolean isBreackout;
 
-	public BouncingBalls(Space space, boolean isBreackout) {
+	public BouncingBalls(Space space, int nrOfObjects, boolean isBreackout) {
 		this.space = space;
 		this.isBreackout = isBreackout;
+		this.nrOfObjects = nrOfObjects;
 	}
 
 	@Override
 	public void init() {
 		space.setStepSize(1); // One second per iteration
-		for (int i = 0; i < space.getNrOfObjects(); i++) {
+		for (int i = 0; i < nrOfObjects; i++) {
 			// radius,weight in [1,20]
 			double radiusAndWeight = 1 + 19 * Math.random();
 			// x,y in [max radius, width or height - max radius]
