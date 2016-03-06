@@ -15,8 +15,8 @@ public class Space {
 	private List<PhysicalObject> objects;
 	private double centrex;
 	private double centrey;
-	private double scale = 10;
-	private static boolean showWake = false;
+	private double scale;
+	private boolean showWake;
 	private static int step = 0;
 	private static int frameRate = 25;
 
@@ -41,6 +41,7 @@ public class Space {
 		centrex = 0.0;
 		centrey = 0.0;
 		scale = 10;
+		showWake = false;
 	}
 
 	public void setStepSize(double seconds) {
@@ -117,12 +118,12 @@ public class Space {
 		this.seconds = seconds;
 	}
 
-	public static boolean isShowWake() {
+	public boolean isShowWake() {
 		return showWake;
 	}
 
-	public static void setShowWake(boolean showWake) {
-		Space.showWake = showWake;
+	public void setShowWake(boolean showWake) {
+		this.showWake = showWake;
 	}
 
 	public int getFrameWidth() {

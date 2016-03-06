@@ -28,7 +28,7 @@ public class FrameSwing extends JFrame {
 					BufferedImage.TYPE_INT_ARGB);
 			GraphicsSwing graphics = new GraphicsSwing(buffer.createGraphics());
 
-			if (!Space.isShowWake()) {
+			if (!space.isShowWake()) {
 				graphics.clearRect(0, 0, getWidth(), getHeight());
 			}
 			for (PhysicalObject po : space.getObjects()) {

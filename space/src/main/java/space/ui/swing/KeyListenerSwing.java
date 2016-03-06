@@ -26,7 +26,7 @@ public class KeyListenerSwing implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent e) {
 		if (e.getKeyChar() == 'w') {
-			Space.setShowWake(!Space.isShowWake());
+			space.setShowWake(!space.isShowWake());
 		}
 	}
 
