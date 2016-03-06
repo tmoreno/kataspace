@@ -17,7 +17,7 @@ public class Space {
 	private double centrey;
 	private double scale;
 	private boolean showWake;
-	private static int step = 0;
+	private int step;
 	private static int frameRate = 25;
 
 	private int nrOfObjects;
@@ -42,6 +42,7 @@ public class Space {
 		centrey = 0.0;
 		scale = 10;
 		showWake = false;
+		step = 0;
 	}
 
 	public void setStepSize(double seconds) {
@@ -142,12 +143,12 @@ public class Space {
 		this.frameHeight = frameHeight;
 	}
 
-	public static int getStep() {
+	public int getStep() {
 		return step;
 	}
 
-	public static void setStep(int step) {
-		Space.step = step;
+	public void setStep(int step) {
+		this.step = step;
 	}
 
 	public Game getGame() {

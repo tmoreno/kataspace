@@ -36,7 +36,7 @@ public class FrameSwing extends JFrame {
 
 				String string = "Objects:" + space.getObjects().size()
 						+ " scale:" + space.getScale() + " steps:"
-						+ Space.getStep() + " frame rate: "
+						+ space.getStep() + " frame rate: "
 						+ Space.getFrameRate();
 				setTitle(string);
 			}
