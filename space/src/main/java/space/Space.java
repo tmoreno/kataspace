@@ -18,7 +18,7 @@ public class Space {
 	private double scale;
 	private boolean showWake;
 	private int step;
-	private static int frameRate = 25;
+	private int frameRate;
 
 	private int nrOfObjects;
 	private Game game;
@@ -43,6 +43,7 @@ public class Space {
 		scale = 10;
 		showWake = false;
 		step = 0;
+		frameRate = 25;
 	}
 
 	public void setStepSize(double seconds) {
@@ -95,12 +96,12 @@ public class Space {
 		return IS_BREAKOUT;
 	}
 
-	public static int getFrameRate() {
+	public int getFrameRate() {
 		return frameRate;
 	}
 
-	public static void setFrameRate(int frameRate) {
-		Space.frameRate = frameRate;
+	public void setFrameRate(int frameRate) {
+		this.frameRate = frameRate;
 	}
 
 	public void initGame() {

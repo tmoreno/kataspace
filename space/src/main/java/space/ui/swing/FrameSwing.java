@@ -37,7 +37,7 @@ public class FrameSwing extends JFrame {
 				String string = "Objects:" + space.getObjects().size()
 						+ " scale:" + space.getScale() + " steps:"
 						+ space.getStep() + " frame rate: "
-						+ Space.getFrameRate();
+						+ space.getFrameRate();
 				setTitle(string);
 			}
 			original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);

@@ -47,18 +47,18 @@ public class Main {
 			});
 
 			try {
-				long ahead = 1000 / Space.getFrameRate()
+				long ahead = 1000 / space.getFrameRate()
 						- (System.currentTimeMillis() - start);
 
 				if (ahead > 50) {
 					Thread.sleep(ahead);
-					if (Space.getFrameRate() < 25) {
-						Space.setFrameRate(Space.getFrameRate() + 1);
+					if (space.getFrameRate() < 25) {
+						space.setFrameRate(space.getFrameRate() + 1);
 					}
 				}
 				else {
 					Thread.sleep(50);
-					Space.setFrameRate(Space.getFrameRate() - 1);
+					space.setFrameRate(space.getFrameRate() - 1);
 				}
 			}
 			catch (InterruptedException e) {
