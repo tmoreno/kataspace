@@ -12,7 +12,7 @@ public class Space {
 										// IS_BOUNCING_BALLS is true
 
 	private double seconds;
-	private List<PhysicalObject> objects = new ArrayList<PhysicalObject>();
+	private List<PhysicalObject> objects;
 	private static double centrex = 0.0;
 	private static double centrey = 0.0;
 	private static double scale = 10;
@@ -37,6 +37,7 @@ public class Space {
 		}
 
 		seconds = 1;
+		objects = new ArrayList<PhysicalObject>();
 	}
 
 	public void setStepSize(double seconds) {
