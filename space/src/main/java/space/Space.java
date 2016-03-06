@@ -13,8 +13,8 @@ public class Space {
 
 	private double seconds;
 	private List<PhysicalObject> objects;
-	private static double centrex = 0.0;
-	private static double centrey = 0.0;
+	private double centrex;
+	private double centrey;
 	private static double scale = 10;
 	private static boolean showWake = false;
 	private static int step = 0;
@@ -38,6 +38,8 @@ public class Space {
 
 		seconds = 1;
 		objects = new ArrayList<PhysicalObject>();
+		centrex = 0.0;
+		centrey = 0.0;
 	}
 
 	public void setStepSize(double seconds) {
@@ -70,20 +72,20 @@ public class Space {
 		Space.scale = scale;
 	}
 
-	public static double getCentrex() {
+	public double getCentrex() {
 		return centrex;
 	}
 
-	public static void setCentrex(double centrex) {
-		Space.centrex = centrex;
+	public void setCentrex(double centrex) {
+		this.centrex = centrex;
 	}
 
-	public static double getCentrey() {
+	public double getCentrey() {
 		return centrey;
 	}
 
-	public static void setCentrey(double centrey) {
-		Space.centrey = centrey;
+	public void setCentrey(double centrey) {
+		this.centrey = centrey;
 	}
 
 	public static boolean isBreackout() {

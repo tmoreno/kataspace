@@ -108,10 +108,10 @@ public class SolarSystem implements Game {
 
 		int diameter = physicalObject.mass >= EARTH_WEIGHT * 10000 ? 7 : 2;
 
-		int xtmp = (int) ((physicalObject.x - Space.getCentrex())
+		int xtmp = (int) ((physicalObject.x - space.getCentrex())
 				/ Space.getScale() + space.getFrameWidth() / 2);
 
-		int ytmp = (int) ((physicalObject.y - Space.getCentrey())
+		int ytmp = (int) ((physicalObject.y - space.getCentrey())
 				/ Space.getScale() + space.getFrameHeight() / 2);
 
 		graphics.fillOval(xtmp - diameter / 2, ytmp - diameter / 2, diameter,

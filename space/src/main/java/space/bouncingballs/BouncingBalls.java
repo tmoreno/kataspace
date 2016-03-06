@@ -28,8 +28,8 @@ public class BouncingBalls implements Game {
 					3 - 6 * Math.random(), radiusAndWeight);
 		}
 		Space.setScale(1);
-		Space.setCentrex(400);
-		Space.setCentrey(390); // Must compensate for title bar
+		space.setCentrex(400);
+		space.setCentrey(390); // Must compensate for title bar
 	}
 
 	@Override
@@ -93,10 +93,10 @@ public class BouncingBalls implements Game {
 			Graphics graphics) {
 		graphics.setColorWhite();
 
-		int xtmp = (int) ((physicalObject.x - Space.getCentrex()) + space
+		int xtmp = (int) ((physicalObject.x - space.getCentrex()) + space
 				.getFrameWidth() / 2);
 
-		int ytmp = (int) ((physicalObject.y - Space.getCentrey()) + space
+		int ytmp = (int) ((physicalObject.y - space.getCentrey()) + space
 				.getFrameHeight() / 2);
 
 		graphics.fillOval((int) (xtmp - physicalObject.radius),

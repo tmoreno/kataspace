@@ -37,10 +37,10 @@ public class MouseListenerSwing implements MouseWheelListener,
 			lastDrag = e.getPoint();
 		}
 
-		Space.setCentrex(Space.getCentrex()
+		space.setCentrex(space.getCentrex()
 				- ((e.getX() - lastDrag.x) * Space.getScale()));
 
-		Space.setCentrey(Space.getCentrey()
+		space.setCentrey(space.getCentrey()
 				- ((e.getY() - lastDrag.y) * Space.getScale()));
 
 		lastDrag = e.getPoint();
