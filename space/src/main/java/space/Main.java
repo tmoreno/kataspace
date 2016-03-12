@@ -75,10 +75,19 @@ public class Main {
 	}
 
 	private static Boolean isBouncingBalls(String[] args) {
-		return Boolean.valueOf(args[0]);
+		String[] argument = args[0].split("=");
+
+		return Boolean.valueOf(argument[1]);
 	}
 
 	private static boolean isBreakOut(String[] args) {
-		return Boolean.valueOf(args[1]);
+		if (args.length > 1) {
+			String[] argument = args[1].split("=");
+
+			return Boolean.valueOf(argument[1]);
+		}
+		else {
+			return false;
+		}
 	}
 }
