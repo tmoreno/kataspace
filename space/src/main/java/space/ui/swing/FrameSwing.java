@@ -17,10 +17,7 @@ public class FrameSwing extends JFrame {
 	private Space space;
 	private Game game;
 
-	public FrameSwing(Space space, Game game) {
-		this.space = space;
-		this.game = game;
-
+	public FrameSwing() {
 		setBackground(Color.BLACK);
 	}
 
@@ -47,6 +44,14 @@ public class FrameSwing extends JFrame {
 			original.drawImage(buffer, 0, 0, getWidth(), getHeight(), null);
 		}
 
+	}
+
+	public void setSpace(Space space) {
+		this.space = space;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
 	}
 
 }

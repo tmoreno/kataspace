@@ -13,8 +13,6 @@ public class Space {
 	private boolean showWake;
 	private int frameRate;
 
-	private int width;
-
 	public Space() {
 		seconds = 1;
 		objects = new ArrayList<PhysicalObject>();
@@ -91,11 +89,4 @@ public class Space {
 		this.showWake = showWake;
 	}
 
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
 }

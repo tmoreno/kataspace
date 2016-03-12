@@ -4,8 +4,6 @@ import space.ui.Graphics;
 
 public interface Game {
 
-	void init();
-
 	void step();
 
 	void collide();

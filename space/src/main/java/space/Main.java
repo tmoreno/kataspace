@@ -3,8 +3,6 @@ package space;
 import java.awt.EventQueue;
 import java.lang.reflect.InvocationTargetException;
 
-import javax.swing.JFrame;
-
 import space.bouncingballs.BouncingBalls;
 import space.solarsystem.SolarSystem;
 import space.ui.swing.FrameSwing;
@@ -16,31 +14,33 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException,
 			InvocationTargetException {
 
-		Space space = new Space();
+		FrameSwing frame = new FrameSwing();
+		frame.setSize(800, 820);
+		frame.setVisible(true);
 
+		Space space;
 		Game game;
 		if (isBouncingBalls(args)) {
-			game = new BouncingBalls(space, 50, isBreakOut(args));
+			space = SpaceFactory.createSpaceForBouncingBalls(50);
+			game = new BouncingBalls(space, isBreakOut(args));
 		}
 		else {
-			game = new SolarSystem(space, 75);
+			space = SpaceFactory
+					.createSpaceForSolarSystem(75, frame.getWidth());
+			game = new SolarSystem(space);
 		}
 
-		JFrame frame = new FrameSwing(space, game);
+		frame.setGame(game);
+		frame.setSpace(space);
+
 		KeyListenerSwing keyListener = new KeyListenerSwing(space);
 		frame.addKeyListener(keyListener);
-
 		if (!isBouncingBalls(args)) {
 			MouseListenerSwing mouseListener = new MouseListenerSwing(space,
 					frame);
 			frame.addMouseWheelListener(mouseListener);
 			frame.addMouseMotionListener(mouseListener);
 		}
-
-		frame.setSize(800, 820);
-		frame.setVisible(true);
-		space.setWidth(frame.getWidth());
-		game.init();
 
 		while (true) {
 			final long start = System.currentTimeMillis();
