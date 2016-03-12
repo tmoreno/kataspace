@@ -3,6 +3,8 @@ package space;
 import java.util.ArrayList;
 import java.util.List;
 
+import space.ui.swing.GraphicsSwing;
+
 public class Space {
 
 	private double seconds;
@@ -12,6 +14,9 @@ public class Space {
 	private double scale;
 	private boolean showWake;
 	private int frameRate;
+	private int step;
+
+	private Game game;
 
 	public Space() {
 		seconds = 1;
@@ -23,10 +28,6 @@ public class Space {
 		frameRate = 25;
 	}
 
-	public void setStepSize(double seconds) {
-		this.seconds = seconds;
-	}
-
 	public PhysicalObject add(double weightKilos, double x, double y,
 			double vx, double vy, double radius) {
 		PhysicalObject physicalObject = new PhysicalObject(weightKilos, x, y,
@@ -35,6 +36,34 @@ public class Space {
 		objects.add(physicalObject);
 
 		return physicalObject;
+	}
+
+	public void step() {
+		game.step();
+
+		step++;
+	}
+
+	public void collide() {
+		game.collide();
+	}
+
+	public void paintPhysicalObject(PhysicalObject po, GraphicsSwing graphics,
+			int width, int height) {
+
+		game.paintPhysicalObject(po, graphics, width, height);
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	public int getStep() {
+		return step;
+	}
+
+	public void setStepSize(double seconds) {
+		this.seconds = seconds;
 	}
 
 	public List<PhysicalObject> getObjects() {

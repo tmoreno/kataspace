@@ -12,7 +12,6 @@ public class BouncingBalls implements Game {
 
 	private Space space;
 	private boolean isBreackout;
-	private int step;
 
 	public BouncingBalls(Space space, boolean isBreackout) {
 		this.space = space;
@@ -28,8 +27,6 @@ public class BouncingBalls implements Game {
 			physicalObject.y = physicalObject.y + physicalObject.vy
 					* space.getSeconds();
 		}
-
-		step++;
 	}
 
 	@Override
@@ -90,10 +87,5 @@ public class BouncingBalls implements Game {
 				(int) (ytmp - physicalObject.radius),
 				(int) (2 * physicalObject.radius),
 				(int) (2 * physicalObject.radius));
-	}
-
-	@Override
-	public int getStep() {
-		return step;
 	}
 }

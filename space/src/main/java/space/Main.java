@@ -3,8 +3,6 @@ package space;
 import java.awt.EventQueue;
 import java.lang.reflect.InvocationTargetException;
 
-import space.bouncingballs.BouncingBalls;
-import space.solarsystem.SolarSystem;
 import space.ui.swing.FrameSwing;
 import space.ui.swing.KeyListenerSwing;
 import space.ui.swing.MouseListenerSwing;
@@ -19,22 +17,20 @@ public class Main {
 		frame.setVisible(true);
 
 		Space space;
-		Game game;
 		if (isBouncingBalls(args)) {
-			space = SpaceFactory.createSpaceForBouncingBalls(50);
-			game = new BouncingBalls(space, isBreakOut(args));
+			space = SpaceFactory.createSpaceForBouncingBalls(50,
+					isBreakOut(args));
 		}
 		else {
 			space = SpaceFactory
 					.createSpaceForSolarSystem(75, frame.getWidth());
-			game = new SolarSystem(space);
 		}
 
-		frame.setGame(game);
 		frame.setSpace(space);
 
 		KeyListenerSwing keyListener = new KeyListenerSwing(space);
 		frame.addKeyListener(keyListener);
+
 		if (!isBouncingBalls(args)) {
 			MouseListenerSwing mouseListener = new MouseListenerSwing(space,
 					frame);
@@ -47,8 +43,8 @@ public class Main {
 
 			EventQueue.invokeAndWait(new Runnable() {
 				public void run() {
-					game.collide();
-					game.step();
+					space.collide();
+					space.step();
 					frame.paint(frame.getGraphics());
 				}
 			});

@@ -1,5 +1,8 @@
 package space;
 
+import space.bouncingballs.BouncingBalls;
+import space.solarsystem.SolarSystem;
+
 public class SpaceFactory {
 
 	private static final double ASTRONOMICAL_UNIT = 149597870.7e3;
@@ -33,6 +36,8 @@ public class SpaceFactory {
 
 		space.add(EARTH_WEIGHT * 20000, 0, 0, 0, 0, 1);
 
+		space.setGame(new SolarSystem(space));
+
 		return space;
 	}
 
@@ -41,7 +46,9 @@ public class SpaceFactory {
 		return random * random;
 	}
 
-	public static Space createSpaceForBouncingBalls(int nrOfObjects) {
+	public static Space createSpaceForBouncingBalls(int nrOfObjects,
+			boolean isBreackout) {
+
 		Space space = new Space();
 
 		space.setStepSize(1); // One second per iteration
@@ -59,6 +66,8 @@ public class SpaceFactory {
 		space.setScale(1);
 		space.setCentrex(400);
 		space.setCentrey(390); // Must compensate for title bar
+
+		space.setGame(new BouncingBalls(space, isBreackout));
 
 		return space;
 	}

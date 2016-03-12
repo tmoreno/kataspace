@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
-import space.Game;
 import space.PhysicalObject;
 import space.Space;
 
@@ -15,7 +14,6 @@ public class FrameSwing extends JFrame {
 	private static final long serialVersionUID = -184389870166680868L;
 
 	private Space space;
-	private Game game;
 
 	public FrameSwing() {
 		setBackground(Color.BLACK);
@@ -32,12 +30,12 @@ public class FrameSwing extends JFrame {
 				graphics.clearRect(0, 0, getWidth(), getHeight());
 			}
 			for (PhysicalObject po : space.getObjects()) {
-				game.paintPhysicalObject(po, graphics, getSize().width,
+				space.paintPhysicalObject(po, graphics, getSize().width,
 						getSize().height);
 
 				String string = "Objects:" + space.getObjects().size()
 						+ " scale:" + space.getScale() + " steps:"
-						+ game.getStep() + " frame rate: "
+						+ space.getStep() + " frame rate: "
 						+ space.getFrameRate();
 				setTitle(string);
 			}
@@ -48,10 +46,6 @@ public class FrameSwing extends JFrame {
 
 	public void setSpace(Space space) {
 		this.space = space;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
 	}
 
 }

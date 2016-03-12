@@ -14,7 +14,6 @@ public class SolarSystem implements Game {
 	private static final double G = 6.67428e-11; // m3/kgs2
 
 	private Space space;
-	private int step;
 
 	public SolarSystem(Space space) {
 		this.space = space;
@@ -44,8 +43,6 @@ public class SolarSystem implements Game {
 			aff.vx = aff.vx - ax * space.getSeconds();
 			aff.vy = aff.vy - ay * space.getSeconds();
 		}
-
-		step++;
 	}
 
 	@Override
@@ -87,11 +84,6 @@ public class SolarSystem implements Game {
 
 		graphics.fillOval(xtmp - diameter / 2, ytmp - diameter / 2, diameter,
 				diameter);
-	}
-
-	@Override
-	public int getStep() {
-		return step;
 	}
 
 }

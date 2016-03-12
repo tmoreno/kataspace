@@ -11,6 +11,4 @@ public interface Game {
 	void paintPhysicalObject(PhysicalObject physicalObject, Graphics graphics,
 			int frameWidth, int frameHeight);
 
-	int getStep();
-
 }
