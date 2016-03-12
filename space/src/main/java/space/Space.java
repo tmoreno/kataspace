@@ -26,6 +26,7 @@ public class Space {
 		scale = 10;
 		showWake = false;
 		frameRate = 25;
+		step = 0;
 	}
 
 	public PhysicalObject add(double weightKilos, double x, double y,
